@@ -1,0 +1,22 @@
+-- Consulta 1
+
+SELECT l.titulo AS Titulo_Libro, 
+    l.autor AS Autor_Libro,
+    CONCAT (u.nombre, " " ,u.apellido) AS Nombre_Usuario, 
+    p.fecha_prestamo AS Fecha_Prestamo,
+    p.fecha_devolucion AS Fecha_Devolucion
+FROM prestamo p
+JOIN libro l ON p.libro_id = l.id
+JOIN usuario u ON p.usuario_id = u.id;
+
+-- Consulta 2
+
+SELECT l.titulo AS Titulo_Libro, 
+    l.autor AS Autor_Libro, 
+    CONCAT (u.nombre, " " ,u.apellido) AS Nombre_Usuario, 
+    p.fecha_prestamo AS Fecha_Prestamo
+FROM prestamo p
+JOIN libro l ON p.libro_id = l.id
+JOIN usuario u ON p.usuario_id = u.id
+WHERE p.fecha_prestamo <= DATE_SUB(NOW(), INTERVAL 7 DAY) 
+AND p.fecha_devolucion IS NULL;

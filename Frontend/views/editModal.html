@@ -1,0 +1,76 @@
+<div
+  class="modal fade"
+  ng-repeat="p in products"
+  id="editModal{{p.id}}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editModal{{p.id}}Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModal{{p.id}}Label">Editar Producto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="editCodeInput{{p.id}}" class="form-label">Código</label>
+          <input
+            type="text"
+            class="form-control"
+            id="editCodeInput{{p.id}}"
+            ng-model="p.code"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="editNameInput{{p.id}}" class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="editNameInput{{p.id}}"
+            ng-model="p.name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="editCategoryInput{{p.id}}" class="form-label"
+            >ID de Categoría</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="editCategoryInput{{p.id}}"
+            ng-model="p.category_id"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="editPriceInput{{p.id}}" class="form-label">Precio</label>
+          <input
+            type="number"
+            class="form-control"
+            id="editPriceInput{{p.id}}"
+            ng-model="p.price"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          ng-click="updateProducto(p)"
+        >
+          Guardar cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

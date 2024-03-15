@@ -14,9 +14,34 @@ angular
         });
     }
 
-    $rootScope.$on("productoAgregado", function (event, args) {
+    $rootScope.$on("refreshProducts", function (event, args) {
       loadProducts();
     });
+
+    $scope.deleteProducto = function (productId) {
+      dataService
+        .deleteProducto(productId)
+        .then(function (response) {
+          console.log("Producto eliminado exitosamente:", response);
+          loadProducts();
+        })
+        .catch(function (error) {
+          console.error("Error al eliminar el producto:", error);
+        });
+    };
+
+    $scope.updateProducto = function (product) {
+      console.log(product);
+      dataService
+        .updateProducto(product)
+        .then(function (response) {
+          console.log("Producto actualizado exitosamente:", response);
+          loadProducts();
+        })
+        .catch(function (error) {
+          console.error("Error al eliminar el producto:", error);
+        });
+    };
 
     loadProducts();
   });

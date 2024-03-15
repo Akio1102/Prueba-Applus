@@ -25,11 +25,16 @@ angular
         dataService
           .addProducto(vm.newProduct)
           .then(function (response) {
-            $rootScope.$broadcast("productoAgregado");
+            $rootScope.$broadcast("refreshProducts");
           })
           .catch(function (error) {
             console.error("Error al agregar producto:", error);
           });
+      };
+
+      this.clearForm = function () {
+        // Restablecer los valores del nuevo producto
+        this.newProduct = {};
       };
     }
   );

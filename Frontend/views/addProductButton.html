@@ -9,6 +9,7 @@
 
 <div
   class="modal fade"
+  a
   id="addModal"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
@@ -27,7 +28,7 @@
           aria-label="Close"
         ></button>
       </div>
-      <form ng-submit="vm.addProduct(newProduct)">
+      <form ng-submit="vm.addProduct(newProduct); vm.clearForm()">
         <div class="modal-body">
           <div class="mb-3">
             <label for="CodigoInput" class="form-label">Código</label>

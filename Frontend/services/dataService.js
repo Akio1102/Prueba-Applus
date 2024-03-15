@@ -18,7 +18,7 @@ angular.module("productos").service("dataService", function ($http) {
   };
 
   this.deleteProducto = function (id) {
-    return $http.delete(baseUrl + "Delete", id);
+    return $http.delete(baseUrl + "Delete", { data: { id } });
   };
 
   this.getCategorias = function () {

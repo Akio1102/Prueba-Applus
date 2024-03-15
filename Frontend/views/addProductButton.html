@@ -1,0 +1,101 @@
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#addModal"
+>
+  Agregar Producto
+</button>
+
+<div
+  class="modal fade"
+  id="addModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="addModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addModalLabel">Agregar Producto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form ng-submit="vm.addProduct(newProduct)">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="CodigoInput" class="form-label">Código</label>
+            <input
+              type="text"
+              class="form-control"
+              id="CodigoInput"
+              placeholder="Ingrese el Código"
+              name="code"
+              required
+              ng-model="vm.newProduct.code"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="NameInput" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="NameInput"
+              placeholder="Nombre"
+              name="name"
+              required
+              ng-model="vm.newProduct.name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="CategoryInput" class="form-label"
+              >ID de Categoría</label
+            >
+
+            <select
+              class="form-select"
+              aria-label="ID de Categoría"
+              id="CategoryInput"
+              name="category_id"
+              required
+              ng-model="vm.newProduct.category_id"
+            >
+              <option value="" disabled selected>
+                Seleccione una categoría
+              </option>
+              <option
+                ng-repeat="categoria in vm.categorias"
+                ng-value="categoria.id"
+              >
+                {{ categoria.name }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="PrecioInput" class="form-label">Precio</label>
+            <input
+              type="number"
+              class="form-control"
+              id="PrecioInput"
+              placeholder="Precio"
+              name="price"
+              required
+              ng-model="vm.newProduct.price"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            Agregar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

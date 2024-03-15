@@ -22,21 +22,37 @@
     <script src="./controllers/addProductController.js"></script>
   </head>
   <body ng-controller="ProductController">
-    <main class="container mt-4">
-      <div class="row">
-        <div class="col">
-          <div
-            ng-controller="AddProductController as vm"
-            ng-include="'views/addProductButton.html'"
-          ></div>
-        </div>
-      </div>
+    <header
+      ng-include="'views/header.html'"
+      class="container-fluid bg-primary py-3"
+    ></header>
 
-      <div class="row mt-4">
-        <div class="col">
-          <div ng-include="'views/product-table.html'"></div>
+    <div class="container mt-4">
+      <main class="pt-2">
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col text-center">
+                <div
+                  ng-controller="AddProductController as vm"
+                  ng-include="'views/addProductButton.html'"
+                  class="mb-2"
+                ></div>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col">
+                <!-- Agregar el título de la tabla -->
+                <h2 class="text-center mb-3">Tabla de Productos</h2>
+                <div class="table-responsive mt-3">
+                  <div ng-include="'views/product-table.html'"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </body>
 </html>
